@@ -247,6 +247,6 @@ public class CalculatorActivity extends AppCompatActivity {
         mValueOne = Double.NaN;
         mValueTwo = Double.NaN;
         mEditText.setText("");
-        mInfoTextView.setText("");
+        mInfoTextView.setText("0");
     }
 }
