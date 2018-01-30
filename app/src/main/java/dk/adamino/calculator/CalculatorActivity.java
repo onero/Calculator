@@ -209,7 +209,7 @@ public class CalculatorActivity extends AppCompatActivity {
      * Compute calculation this far and set text to substraction
      * @param view
      */
-    public void onSubstractClick(View view) {
+    public void onSubtractClick(View view) {
         computeOrParse();
 
         mCurrentOperator = SUBTRACTION;
