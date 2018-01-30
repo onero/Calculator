@@ -55,6 +55,7 @@
         android:onClick="onEightClick"
         android:text="@string/_8"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonNine"
         app:layout_constraintStart_toEndOf="@+id/buttonSeven"
         app:layout_constraintTop_toBottomOf="@+id/buttonClear"/>
 
@@ -66,6 +67,7 @@
         android:onClick="onNineClick"
         android:text="@string/_9"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonMultiply"
         app:layout_constraintStart_toEndOf="@+id/buttonEight"
         app:layout_constraintTop_toBottomOf="@+id/buttonDelete"/>
 
@@ -88,6 +90,7 @@
         android:onClick="onFiveClick"
         android:text="@string/_5"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSix"
         app:layout_constraintStart_toEndOf="@+id/buttonFour"
         app:layout_constraintTop_toBottomOf="@+id/buttonEight"/>
 
@@ -99,6 +102,7 @@
         android:onClick="onSixClick"
         android:text="@string/_6"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSubtract"
         app:layout_constraintStart_toEndOf="@+id/buttonFive"
         app:layout_constraintTop_toBottomOf="@+id/buttonNine"/>
 
@@ -121,6 +125,7 @@
         android:onClick="onTwoClick"
         android:text="@string/_2"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonThree"
         app:layout_constraintStart_toEndOf="@+id/buttonOne"
         app:layout_constraintTop_toBottomOf="@+id/buttonFive"/>
 
@@ -132,6 +137,7 @@
         android:onClick="onThreeClick"
         android:text="@string/_3"
         android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonAdd"
         app:layout_constraintStart_toEndOf="@+id/buttonTwo"
         app:layout_constraintTop_toBottomOf="@+id/buttonSix"/>
 
@@ -142,8 +148,8 @@
         android:onClick="onDotClick"
         android:text="@string/dot"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/buttonZero"
-        app:layout_constraintTop_toBottomOf="@+id/buttonThree"/>
+        app:layout_constraintStart_toStartOf="@+id/buttonOne"
+        app:layout_constraintTop_toBottomOf="@+id/buttonOne"/>
 
     <Button
         android:id="@+id/buttonZero"
@@ -153,37 +159,49 @@
         android:onClick="onZeroClick"
         android:text="@string/_0"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/buttonInvert"
+        app:layout_constraintEnd_toStartOf="@+id/buttonEqual"
+        app:layout_constraintStart_toEndOf="@+id/buttonDot"
         app:layout_constraintTop_toBottomOf="@+id/buttonTwo"/>
 
     <Button
         android:id="@+id/buttonEqual"
-        android:layout_width="wrap_content"
+        android:layout_width="182dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/adaminoGreen"
         android:onClick="onEqualsClick"
         android:text="@string/equals"
         android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/buttonDot"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAdd"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/buttonThree"
+        app:layout_constraintTop_toBottomOf="@+id/buttonThree"/>
 
     <Button
         android:id="@+id/buttonDivide"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/adaminoBlue"
         android:onClick="onDivideClick"
         android:text="@string/divide"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonDelete"
-        app:layout_constraintTop_toTopOf="@+id/buttonDelete"/>
+        app:layout_constraintTop_toBottomOf="@+id/editText"/>
 
     <Button
         android:id="@+id/buttonAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/adaminoBlue"
         android:onClick="onAddClick"
         android:text="@string/add"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonThree"
         app:layout_constraintTop_toBottomOf="@+id/buttonSubtract"/>
 
@@ -191,9 +209,13 @@
         android:id="@+id/buttonSubtract"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/adaminoBlue"
         android:onClick="onSubtractClick"
         android:text="@string/subtract"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonSix"
         app:layout_constraintTop_toBottomOf="@+id/buttonMultiply"/>
 
@@ -201,9 +223,13 @@
         android:id="@+id/buttonMultiply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/adaminoBlue"
         android:onClick="onMultiplyClick"
         android:text="@string/multiply"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonNine"
         app:layout_constraintTop_toBottomOf="@+id/buttonDivide"/>
 
@@ -212,6 +238,7 @@
         android:layout_width="176dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/adaminoRed"
         android:onClick="onClearClick"
         android:text="@string/clear"
@@ -223,14 +250,9 @@
         android:id="@+id/buttonDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/buttonDivide"
         app:layout_constraintStart_toEndOf="@+id/buttonClear"
-        app:layout_constraintTop_toTopOf="@+id/buttonClear"/>
-
-    <Button
-        android:id="@+id/buttonInvert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@+id/buttonOne"
-        app:layout_constraintTop_toBottomOf="@+id/buttonOne"/>
+        app:layout_constraintTop_toBottomOf="@+id/editText"/>
 
 </android.support.constraint.ConstraintLayout>
