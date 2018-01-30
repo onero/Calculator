@@ -26,6 +26,7 @@
         android:background="@color/adaminoBlue"
         android:enabled="false"
         android:gravity="bottom"
+        android:hint="Awaiting input..."
         android:lines="2"
         android:maxLines="2"
         android:textAlignment="center"
