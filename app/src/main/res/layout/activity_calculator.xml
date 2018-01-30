@@ -26,7 +26,6 @@
         android:background="@color/adaminoBlue"
         android:enabled="false"
         android:gravity="bottom"
-        android:hint="Awaiting input..."
         android:lines="2"
         android:maxLines="2"
         android:textAlignment="center"
@@ -160,20 +159,18 @@
         android:onClick="onZeroClick"
         android:text="@string/_0"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/buttonEqual"
         app:layout_constraintStart_toEndOf="@+id/buttonDot"
         app:layout_constraintTop_toBottomOf="@+id/buttonTwo"/>
 
     <Button
         android:id="@+id/buttonEqual"
-        android:layout_width="182dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:backgroundTint="@color/adaminoGreen"
         android:onClick="onEqualsClick"
         android:text="@string/equals"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonAdd"
         app:layout_constraintStart_toStartOf="@+id/buttonThree"
         app:layout_constraintTop_toBottomOf="@+id/buttonThree"/>
 
@@ -238,7 +235,7 @@
         android:id="@+id/buttonClear"
         android:layout_width="176dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/adaminoRed"
         android:onClick="onClearClick"
