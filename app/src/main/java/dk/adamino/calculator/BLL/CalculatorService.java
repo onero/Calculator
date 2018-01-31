@@ -1,26 +1,23 @@
 package dk.adamino.calculator.BLL;
 
-import dk.adamino.calculator.Model.EOperator;
+import com.udojava.evalex.Expression;
 
-import static dk.adamino.calculator.Model.EOperator.ADDITION;
-import static dk.adamino.calculator.Model.EOperator.DIVISION;
-import static dk.adamino.calculator.Model.EOperator.MULTIPLICATION;
-import static dk.adamino.calculator.Model.EOperator.SUBTRACTION;
+import java.math.BigDecimal;
 
 public class CalculatorService implements ICalculatorService {
 
-    @Override
-    public Double computeCalculation(Double valueOne, Double valueTwo, EOperator operator) {
-        Double result = 0.0;
-        if(operator == ADDITION)
-            result = valueOne + valueTwo;
-        else if(operator == SUBTRACTION)
-            result = valueOne - valueTwo;
-        else if(operator == MULTIPLICATION)
-            result = valueOne * valueTwo;
-        else if(operator == DIVISION)
-            result = valueOne / valueTwo;
 
+    private static final String RESULT_PREFIX = "result = ";
+    private static final String RESULT_STRING = "result";
+    private static final String TAG = "CalculatorService";
+
+
+    @Override
+    public BigDecimal evaluateEquation(String equation) {
+        BigDecimal result;
+        Expression expression = new Expression(equation);
+        expression.setPrecision(4);
+        result = expression.eval();
         return result;
     }
 }

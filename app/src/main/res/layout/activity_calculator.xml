@@ -8,33 +8,28 @@
     tools:context="dk.adamino.calculator.CalculatorActivity">
 
     <TextView
-        android:id="@+id/infoTextView"
-        android:layout_width="373dp"
-        android:layout_height="46dp"
-        android:text="@string/_0"
-        android:textAlignment="center"
+        android:id="@+id/tvInput"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:autoText="false"
+        android:clickable="false"
+        android:textAlignment="textEnd"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/adaminoBlue"
-        android:enabled="false"
-        android:gravity="bottom"
-        android:lines="2"
-        android:maxLines="2"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_light"
-        android:textSize="20sp"
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:clickable="false"
+        android:textAlignment="textEnd"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoTextView"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvInput"/>
 
     <Button
         android:id="@+id/buttonSeven"
@@ -179,7 +174,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="74dp"
         android:backgroundTint="@color/adaminoBlue"
         android:onClick="onDivideClick"
         android:text="@string/divide"
@@ -187,7 +182,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonDelete"
-        app:layout_constraintTop_toBottomOf="@+id/editText"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvResult"/>
 
     <Button
         android:id="@+id/buttonAdd"
@@ -235,22 +230,22 @@
         android:id="@+id/buttonClear"
         android:layout_width="176dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="74dp"
         android:backgroundTint="@color/adaminoRed"
         android:onClick="onClearClick"
         android:text="@string/clear"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvResult"/>
 
     <Button
         android:id="@+id/buttonDelete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="74dp"
         app:layout_constraintEnd_toStartOf="@+id/buttonDivide"
         app:layout_constraintStart_toEndOf="@+id/buttonClear"
-        app:layout_constraintTop_toBottomOf="@+id/editText"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvResult"/>
 
 </android.support.constraint.ConstraintLayout>
