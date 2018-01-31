@@ -1,15 +1,13 @@
 package dk.adamino.calculator.BLL;
 
-import dk.adamino.calculator.Model.EOperator;
+import java.math.BigDecimal;
 
 public interface ICalculatorService {
 
     /**
-     * Compute operation of two values with a provided operand
-     * @param valueOne
-     * @param valueTwo
-     * @param operator
+     * Evaluate equation input as string
+     * @param equation
      * @return
      */
-    Double computeCalculation(Double valueOne, Double valueTwo, EOperator operator);
+    BigDecimal evaluateEquation(String equation);
 }
