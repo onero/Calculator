@@ -1,9 +1,8 @@
 package dk.adamino.calculator.Model;
 
 public enum EOperator {
-
     ADDITION,
-    SUBTRACTION,
+    DIVISION,
     MULTIPLICATION,
-    DIVISION
+    SUBTRACTION
 }

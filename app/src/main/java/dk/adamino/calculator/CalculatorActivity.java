@@ -1,16 +1,26 @@
 package dk.adamino.calculator;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.math.BigDecimal;
 
 import dk.adamino.calculator.BLL.CalculatorService;
 import dk.adamino.calculator.BLL.ICalculatorService;
+import dk.adamino.calculator.Model.EOperator;
 
 public class CalculatorActivity extends AppCompatActivity {
+
+    public static final String SPACE = " ";
+    public static final String ADDITION_STRING = " + ";
+    public static final String DIVISION_STRING = " / ";
+    public static final String MULTIPLICATION_STRING = " * ";
+    public static final String SUBTRACTION_STRING = " - ";
+    public static final String EQUALS_STRING = " = ";
 
     private TextView mInputView;
     private TextView mResultView;
@@ -19,6 +29,8 @@ public class CalculatorActivity extends AppCompatActivity {
 
     private String mEquation;
     private BigDecimal mResult;
+
+    private EOperator mCurrentOperation;
 
     private boolean mInEquation;
 
@@ -36,11 +48,17 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     /**
-     * Add a dot
+     * Add a dot, if one isn't already present
      * @param view
      */
     public void onDotClick(View view) {
-        mInputView.setText(mInputView.getText() + ".");
+        String lastChar = getLastcharOfString();
+        // Validate we're not clicking a new operator
+        if (!lastChar.equals(".")) {
+            mInputView.setText(mInputView.getText() + ".");
+        }else {
+            Toast.makeText(this, R.string.DifferentActionErrorMessage, Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
@@ -120,11 +138,29 @@ public class CalculatorActivity extends AppCompatActivity {
      * @param view
      */
     public void onAddClick(View view) {
-        mEquation = mInputView.getText().toString();
-        checkInEquation();
-        mEquation = mInputView.getText() + " + ";
-        mInputView.setText(mEquation);
-        mInEquation = true;
+        String lastChar = getLastcharOfString();
+        // Validate we're not clicking a new operator
+        if (!lastChar.equals(SPACE)) {
+            mEquation = mInputView.getText().toString();
+            checkInEquation();
+            mEquation = mInputView.getText() + ADDITION_STRING;
+            mInputView.setText(mEquation);
+            mInEquation = true;
+        }else {
+            if (mCurrentOperation == EOperator.ADDITION) {
+                Toast.makeText(this, R.string.DifferentActionErrorMessage, Toast.LENGTH_SHORT).show();
+            } else {
+                String alteredEquation = getEquationStringBeforeLastOperator() + ADDITION_STRING;
+                mEquation = alteredEquation;
+                mInputView.setText(alteredEquation);
+            }
+        }
+        mCurrentOperation = EOperator.ADDITION;
+    }
+
+    @NonNull
+    private String getLastcharOfString() {
+        return mInputView.getText().toString().substring(mInputView.getText().length() - 1);
     }
 
     /**
@@ -144,11 +180,24 @@ public class CalculatorActivity extends AppCompatActivity {
      * @param view
      */
     public void onDivideClick(View view) {
-        mEquation = mInputView.getText().toString();
-        checkInEquation();
-        mEquation = mInputView.getText() + " / ";
-        mInputView.setText(mEquation);
-        mInEquation = true;
+        String lastChar = getLastcharOfString();
+        // Validate we're not clicking a new operator
+        if (!lastChar.equals(SPACE)) {
+            mEquation = mInputView.getText().toString();
+            checkInEquation();
+            mEquation = mInputView.getText() + DIVISION_STRING;
+            mInputView.setText(mEquation);
+            mInEquation = true;
+        }else {
+            if (mCurrentOperation == EOperator.DIVISION) {
+                Toast.makeText(this, R.string.DifferentActionErrorMessage, Toast.LENGTH_SHORT).show();
+            } else {
+                String alteredEquation = getEquationStringBeforeLastOperator() + DIVISION_STRING;
+                mEquation = alteredEquation;
+                mInputView.setText(alteredEquation);
+            }
+        }
+        mCurrentOperation = EOperator.DIVISION;
     }
 
     /**
@@ -156,11 +205,24 @@ public class CalculatorActivity extends AppCompatActivity {
      * @param view
      */
     public void onMultiplyClick(View view) {
-        mEquation = mInputView.getText().toString();
-        checkInEquation();
-        mEquation = mInputView.getText() + " * ";
-        mInputView.setText(mEquation);
-        mInEquation = true;
+        String lastChar = getLastcharOfString();
+        // Validate we're not clicking a new operator
+        if (!lastChar.equals(SPACE)) {
+            mEquation = mInputView.getText().toString();
+            checkInEquation();
+            mEquation = mInputView.getText() + MULTIPLICATION_STRING;
+            mInputView.setText(mEquation);
+            mInEquation = true;
+        }else {
+            if (mCurrentOperation == EOperator.MULTIPLICATION) {
+                Toast.makeText(this, R.string.DifferentActionErrorMessage, Toast.LENGTH_SHORT).show();
+            } else {
+                String alteredEquation = getEquationStringBeforeLastOperator() + MULTIPLICATION_STRING;
+                mEquation = alteredEquation;
+                mInputView.setText(alteredEquation);
+            }
+        }
+        mCurrentOperation = EOperator.MULTIPLICATION;
     }
 
     /**
@@ -168,11 +230,29 @@ public class CalculatorActivity extends AppCompatActivity {
      * @param view
      */
     public void onSubtractClick(View view) {
-        mEquation = mInputView.getText().toString();
-        checkInEquation();
-        mEquation = mInputView.getText() + " - ";
-        mInputView.setText(mEquation);
-        mInEquation = true;
+        String lastChar = getLastcharOfString();
+        // Validate we're not clicking a new operator
+        if (!lastChar.equals(SPACE)) {
+            mEquation = mInputView.getText().toString();
+            checkInEquation();
+            mEquation = mInputView.getText() + SUBTRACTION_STRING;
+            mInputView.setText(mEquation);
+            mInEquation = true;
+        }else {
+            if (mCurrentOperation == EOperator.SUBTRACTION) {
+                Toast.makeText(this, R.string.DifferentActionErrorMessage, Toast.LENGTH_SHORT).show();
+            } else {
+                String alteredEquation = getEquationStringBeforeLastOperator() + SUBTRACTION_STRING;
+                mEquation = alteredEquation;
+                mInputView.setText(alteredEquation);
+            }
+        }
+        mCurrentOperation = EOperator.SUBTRACTION;
+    }
+
+    @NonNull
+    private String getEquationStringBeforeLastOperator() {
+        return mEquation.substring(0, mEquation.length() - 3);
     }
 
     /**
@@ -180,12 +260,18 @@ public class CalculatorActivity extends AppCompatActivity {
      * @param view
      */
     public void onEqualsClick(View view) {
-        mEquation = mInputView.getText().toString();
-        checkInEquation();
-        String finalString = mInputView.getText() + " = " + mResultView.getText();
-        mResultView.setText(finalString);
-        mInputView.setText("");
-        mInEquation = false;
+        String lastChar = getLastcharOfString();
+        // Validate we have a correct syntax
+        if (!lastChar.equals(SPACE)) {
+            mEquation = mInputView.getText().toString();
+            checkInEquation();
+            String finalString = mInputView.getText() + EQUALS_STRING + mResultView.getText();
+            mResultView.setText(finalString);
+            mInputView.setText("");
+            mInEquation = false;
+        } else {
+            Toast.makeText(this, "Please add a number to the equation", Toast.LENGTH_SHORT).show();
+        }
     }
 
     /**
