@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 import dk.adamino.calculator.BLL.CalculatorService;
 import dk.adamino.calculator.BLL.ICalculatorService;
@@ -18,22 +17,16 @@ public class CalculatorActivity extends AppCompatActivity {
 
     private ICalculatorService mCalculatorService;
 
-    private static final String TAG = "Calculator";
-
     private String mEquation;
     private BigDecimal mResult;
 
     private boolean mInEquation;
-
-    private DecimalFormat mDecimalFormat;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-
-        mDecimalFormat = new DecimalFormat("#.##########");
 
         mInputView = findViewById(R.id.tvInput);
         mResultView = findViewById(R.id.tvResult);
