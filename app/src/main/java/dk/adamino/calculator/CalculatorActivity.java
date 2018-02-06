@@ -21,6 +21,7 @@ public class CalculatorActivity extends AppCompatActivity {
     public static final String MULTIPLICATION_STRING = " * ";
     public static final String SUBTRACTION_STRING = " - ";
     public static final String EQUALS_STRING = " = ";
+    public static final String DOT_STRING = ".";
 
     private TextView mInputView;
     private TextView mResultView;
@@ -54,8 +55,8 @@ public class CalculatorActivity extends AppCompatActivity {
     public void onDotClick(View view) {
         String lastChar = getLastcharOfString();
         // Validate we're not clicking a new operator
-        if (!lastChar.equals(".")) {
-            mInputView.setText(mInputView.getText() + ".");
+        if (!lastChar.equals(DOT_STRING)) {
+            mInputView.setText(mInputView.getText() + DOT_STRING);
         }else {
             Toast.makeText(this, R.string.DifferentActionErrorMessage, Toast.LENGTH_SHORT).show();
         }
